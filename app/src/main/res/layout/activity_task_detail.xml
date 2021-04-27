@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskDetail">
+
+    <TextView
+        android:id="@+id/taskDetailView"
+        android:layout_width="118dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="88dp"
+        android:textColor="#0A0A0A"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextMultiLine2"
+        android:layout_width="270dp"
+        android:layout_height="172dp"
+        android:layout_marginTop="152dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textShortMessage|textLongMessage|textMultiLine"
+        android:text="Scenester unicorn tattooed paleo vape man bun 90's cred mustache art party. VHS whatever squid, gluten-free bicycle rights seitan semiotics raw denim shoreditch master cleanse helvetica copper mug. Cold-pressed 3 wolf moon kickstarter mustache. Mlkshk marfa actually, PBRB seitan post-ironic locavore."
+        android:textColor="#010101"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDetailView"
+        app:layout_constraintVertical_bias="0.025" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,47 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/homeWorkTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#2196F3"
+        android:text="Homework"
+        app:layout_constraintBottom_toBottomOf="@+id/trashTaskButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/trashTaskButton"
+        app:layout_constraintTop_toTopOf="@+id/trashTaskButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/carTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#2196F3"
+        android:text="Car"
+        app:layout_constraintBottom_toBottomOf="@+id/trashTaskButton"
+        app:layout_constraintEnd_toStartOf="@+id/trashTaskButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/trashTaskButton" />
+
+    <Button
+        android:id="@+id/trashTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:backgroundTint="#2196F3"
+        android:text="Trash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/homeWorkTaskButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/carTaskButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.711" />
+
+    <Button
         android:id="@+id/allTaskButton"
         android:layout_width="120dp"
         android:layout_height="49dp"
@@ -14,7 +55,7 @@
         android:text="ALL TASKS"
         android:textColor="#FFFCFC"
         app:iconTint="#2196F3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/homeWorkTaskButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/taskButton"
@@ -25,7 +66,7 @@
         android:id="@+id/taskButton"
         android:layout_width="120dp"
         android:layout_height="49dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="48dp"
         android:backgroundTint="#2196F3"
         android:text="ADD TASK"
         android:textColor="#FFFCFC"
@@ -34,16 +75,54 @@
         app:layout_constraintTop_toTopOf="@+id/allTaskButton"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="108dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#2196F3"
+        android:text="Settings"
+        android:textColor="#FFFCFC"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="279dp"
-        android:layout_height="286dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="255dp"
+        android:layout_height="252dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toTopOf="@+id/allTaskButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="79dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Home"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/trashTaskButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
