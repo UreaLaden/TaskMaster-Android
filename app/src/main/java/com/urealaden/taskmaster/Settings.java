@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.TextView;
 
+import com.urealaden.taskmaster.activities.MainActivity;
+
 public class Settings extends AppCompatActivity {
 
     @Override
@@ -24,7 +26,7 @@ public class Settings extends AppCompatActivity {
             preferencesEditor.putString("username",username);
             preferencesEditor.apply();
 
-            Intent goToMainPageIntent = new Intent(Settings.this,MainActivity.class);
+            Intent goToMainPageIntent = new Intent(Settings.this, MainActivity.class);
             Settings.this.startActivity(goToMainPageIntent);
             startActivity(goToMainPageIntent);
         });

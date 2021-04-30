@@ -1,15 +1,28 @@
 
-package com.urealaden.taskmaster;
+package com.urealaden.taskmaster.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.urealaden.taskmaster.AddTask;
+import com.urealaden.taskmaster.AllTasks;
+import com.urealaden.taskmaster.R;
+import com.urealaden.taskmaster.Settings;
+import com.urealaden.taskmaster.TaskDetail;
+import com.urealaden.taskmaster.adapters.TaskRecyclerViewAdapter;
+import com.urealaden.taskmaster.fragments.TaskFragment;
+import com.urealaden.taskmaster.models.TaskItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button taskButton = findViewById(R.id.taskButton);
         taskButton.setOnClickListener(view -> {
-            Intent goToNewTaskPageIntent = new Intent(MainActivity.this,AddTask.class);
+            Intent goToNewTaskPageIntent = new Intent(MainActivity.this, AddTask.class);
             MainActivity.this.startActivity(goToNewTaskPageIntent);
             startActivity(goToNewTaskPageIntent);
         });
         Button allTasksButton = findViewById(R.id.allTaskButton);
         allTasksButton.setOnClickListener(view ->{
-            Intent goToAllTaskPageIntent = new Intent(MainActivity.this,AllTasks.class);
+            Intent goToAllTaskPageIntent = new Intent(MainActivity.this, AllTasks.class);
             MainActivity.this.startActivity(goToAllTaskPageIntent);
             startActivity(goToAllTaskPageIntent);
         });
@@ -47,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             preferenceEditor.putString("task",carTask);
             preferenceEditor.apply();
 
-            Intent goToTaskDetailPageIntent = new Intent(MainActivity.this,TaskDetail.class);
+            Intent goToTaskDetailPageIntent = new Intent(MainActivity.this, TaskDetail.class);
             startActivity(goToTaskDetailPageIntent);
         });
 
@@ -74,8 +87,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(v ->{
-            Intent goToSettingsPageIntent = new Intent(MainActivity.this,Settings.class);
+            Intent goToSettingsPageIntent = new Intent(MainActivity.this, Settings.class);
             startActivity(goToSettingsPageIntent);
         });
+
+
+
     }
 }

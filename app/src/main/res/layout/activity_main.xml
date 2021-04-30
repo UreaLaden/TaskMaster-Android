@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <Button
         android:id="@+id/homeWorkTaskButton"
@@ -31,13 +31,14 @@
         app:layout_constraintEnd_toStartOf="@+id/trashTaskButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/trashTaskButton" />
+        app:layout_constraintTop_toTopOf="@+id/trashTaskButton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/trashTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="120dp"
         android:backgroundTint="#2196F3"
         android:text="Trash"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/carTaskButton"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintVertical_bias="0.305" />
 
     <Button
         android:id="@+id/allTaskButton"
@@ -57,16 +58,16 @@
         app:iconTint="#2196F3"
         app:layout_constraintBottom_toTopOf="@+id/homeWorkTaskButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toEndOf="@+id/taskButton"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.421" />
 
     <Button
         android:id="@+id/taskButton"
         android:layout_width="120dp"
         android:layout_height="49dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="60dp"
         android:backgroundTint="#2196F3"
         android:text="ADD TASK"
         android:textColor="#FFFCFC"
@@ -92,9 +93,9 @@
         android:id="@+id/imageView2"
         android:layout_width="255dp"
         android:layout_height="252dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/allTaskButton"
+        android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
