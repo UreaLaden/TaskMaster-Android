@@ -11,10 +11,12 @@ On the “Add a Task” page, users type in details about a new task, specifical
 ### All Tasks
 The all tasks page should is just image with a back button; it needs no functionality.
 
-![Home Page](screenshots/androidTaskDetail.png)
+![Home Page](screenshots/recycler-views.png) 
 
 
 Daily Change Log:
 
 Created 3 hard Tasks and passed titles to the task details page.
 Used the preference editor to connect input username from Settings page to Home page
+
+Added recycler views, task details as well as re-usable task fragments.
