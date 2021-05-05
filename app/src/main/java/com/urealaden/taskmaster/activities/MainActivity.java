@@ -9,9 +9,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
 import com.urealaden.taskmaster.AddTask;
 import com.urealaden.taskmaster.AllTasks;
 import com.urealaden.taskmaster.R;
@@ -26,8 +32,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String TAG = "urealadenTask.main";
+    public List<Task> tasks = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -40,6 +50,23 @@ public class MainActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.textViewUsername)).setText(username + "'s tasks");
         }
 
+
+        try {
+            Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.configure(getApplicationContext());
+        } catch (AmplifyException e) {
+            e.printStackTrace();
+        }
+        Amplify.API.query(
+                ModelQuery.list(Task.class),
+                response ->{
+                    String x = "";
+                    for(Task t: response.getData()){
+                        tasks.add(t);
+                    }
+                },
+                response -> Log.i(TAG, "retrievingTasks: " + response.toString())
+        );
 
         Button taskButton = findViewById(R.id.taskButton);
         taskButton.setOnClickListener(view -> {
