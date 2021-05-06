@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         String username = preferences.getString("username",null);
         if(username != null){
-            ((TextView) findViewById(R.id.textViewUsername)).setText(username + "'s tasks");
+            ((TextView) findViewById(R.id.textViewUsername)).setText("Welcome back " + username + "!");
         }
 
 
@@ -79,37 +79,6 @@ public class MainActivity extends AppCompatActivity {
             Intent goToAllTaskPageIntent = new Intent(MainActivity.this, AllTasks.class);
             MainActivity.this.startActivity(goToAllTaskPageIntent);
             startActivity(goToAllTaskPageIntent);
-        });
-        Button carTaskButton = findViewById(R.id.carTaskButton);
-        carTaskButton.setOnClickListener(view ->{
-
-            String carTask = carTaskButton.getText().toString();
-            preferenceEditor.putString("task",carTask);
-            preferenceEditor.apply();
-
-            Intent goToTaskDetailPageIntent = new Intent(MainActivity.this, TaskDetail.class);
-            startActivity(goToTaskDetailPageIntent);
-        });
-
-        Button trashButton = findViewById(R.id.trashTaskButton);
-        trashButton.setOnClickListener(view ->{
-
-            String trashTask = trashButton.getText().toString();
-            preferenceEditor.putString("task",trashTask);
-            preferenceEditor.apply();
-
-            Intent goToTaskDetailPageIntent = new Intent(MainActivity.this, TaskDetail.class);
-            startActivity(goToTaskDetailPageIntent);
-        });
-        Button homeWorkButton = findViewById(R.id.homeWorkTaskButton);
-        homeWorkButton.setOnClickListener(view ->{
-
-            String homeWorkTask = homeWorkButton.getText().toString();
-            preferenceEditor.putString("task",homeWorkTask);
-            preferenceEditor.apply();
-
-            Intent goToTaskDetailPageIntent = new Intent(MainActivity.this, TaskDetail.class);
-            startActivity(goToTaskDetailPageIntent);
         });
 
         Button settingsButton = findViewById(R.id.settingsButton);

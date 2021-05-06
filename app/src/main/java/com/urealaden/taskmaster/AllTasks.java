@@ -59,7 +59,6 @@ public class AllTasks extends AppCompatActivity {
                     for(Task t:tasks){
                         sj.add(t.getName());
                     }
-                    ((TextView)findViewById(R.id.allTasks)).setText(sj.toString());
                     recyclerView.getAdapter().notifyDataSetChanged();
                 }
             }
