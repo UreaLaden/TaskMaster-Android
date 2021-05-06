@@ -2,8 +2,6 @@
 package com.urealaden.taskmaster.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,17 +13,12 @@ import android.widget.TextView;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
-import com.urealaden.taskmaster.AddTask;
-import com.urealaden.taskmaster.AllTasks;
+import com.amplifyframework.datastore.generated.model.Team;
 import com.urealaden.taskmaster.R;
-import com.urealaden.taskmaster.Settings;
-import com.urealaden.taskmaster.TaskDetail;
-import com.urealaden.taskmaster.adapters.TaskRecyclerViewAdapter;
-import com.urealaden.taskmaster.fragments.TaskFragment;
-import com.urealaden.taskmaster.models.TaskItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static String TAG = "urealadenTask.main";
     public List<Task> tasks = new ArrayList<>();
+    public static List<Team> allTeams = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,26 +38,39 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor preferenceEditor = preferences.edit();
 
-
-        String username = preferences.getString("username",null);
-        if(username != null){
-            ((TextView) findViewById(R.id.textViewUsername)).setText("Welcome back " + username + "!");
-        }
-
-
         try {
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.configure(getApplicationContext());
         } catch (AmplifyException e) {
             e.printStackTrace();
         }
+
+        String username = preferences.getString("username",null);
+        if(username != null){
+            ((TextView) findViewById(R.id.textViewUsername)).setText("Welcome back " + username + "!");
+        }
+
+//        Team team = Team.builder()
+//                .name("Yellow")
+//                .build();
+//
+//
+//        Amplify.API.mutate(
+//                ModelMutation.create(team),
+//                    r -> {
+//                        Log.i(TAG, "onCreate: created team");
+//                    },
+//                    r -> {}
+//                    );
+//
+
         Amplify.API.query(
                 ModelQuery.list(Task.class),
                 response ->{
-                    String x = "";
                     for(Task t: response.getData()){
                         tasks.add(t);
                     }
+
                 },
                 response -> Log.i(TAG, "retrievingTasks: " + response.toString())
         );
@@ -87,7 +94,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(goToSettingsPageIntent);
         });
 
-
+        Amplify.API.query(
+                ModelQuery.list(Team.class),
+                r -> {
+                    for(Team t: r.getData()){
+                        allTeams.add(t);
+                    }
+                },
+                r -> {}
+        );
 
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTask">
+    tools:context=".activities.AddTask">
 
     <TextView
         android:id="@+id/textView3"
@@ -58,7 +58,6 @@
         android:text="Submit"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
 
@@ -89,14 +88,13 @@
         app:layout_constraintTop_toBottomOf="@+id/submitButton"
         app:layout_constraintVertical_bias="0.052" />
 
-    <TextView
-        android:id="@+id/submitTextView"
-        android:layout_width="131dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="#060606"
-        app:layout_constraintBottom_toTopOf="@+id/submitButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <Spinner
+        android:id="@+id/spinnerTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="@+id/submitButton"
+        app:layout_constraintStart_toStartOf="@+id/submitButton"
+        app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings">
+    tools:context=".activities.Settings">
+
+    <Spinner
+        android:id="@+id/settingsPageSpinnerTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveUsernameButton"
+        app:layout_constraintEnd_toEndOf="@+id/usernameView"
+        app:layout_constraintStart_toStartOf="@+id/usernameView" />
 
     <TextView
         android:id="@+id/textView2"
@@ -39,5 +48,6 @@
         app:layout_constraintBottom_toTopOf="@+id/saveUsernameButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.491" />
 </androidx.constraintlayout.widget.ConstraintLayout>
