@@ -1,5 +1,6 @@
 package com.amplifyframework.datastore.generated.model;
 
+import com.amplifyframework.core.model.annotations.BelongsTo;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,13 +19,16 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the Task type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "Tasks")
+@Index(name = "team", fields = {"teamId"})
 public final class Task implements Model {
   public static final QueryField ID = field("Task", "id");
   public static final QueryField NAME = field("Task", "name");
   public static final QueryField DESCRIPTION = field("Task", "description");
+  public static final QueryField TEAM = field("Task", "teamId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
   private final @ModelField(targetType="String") String description;
+  private final @ModelField(targetType="Team") @BelongsTo(targetName = "teamId", type = Team.class) Team team;
   public String getId() {
       return id;
   }
@@ -37,10 +41,15 @@ public final class Task implements Model {
       return description;
   }
   
-  private Task(String id, String name, String description) {
+  public Team getTeam() {
+      return team;
+  }
+  
+  private Task(String id, String name, String description, Team team) {
     this.id = id;
     this.name = name;
     this.description = description;
+    this.team = team;
   }
   
   @Override
@@ -53,7 +62,8 @@ public final class Task implements Model {
       Task task = (Task) obj;
       return ObjectsCompat.equals(getId(), task.getId()) &&
               ObjectsCompat.equals(getName(), task.getName()) &&
-              ObjectsCompat.equals(getDescription(), task.getDescription());
+              ObjectsCompat.equals(getDescription(), task.getDescription()) &&
+              ObjectsCompat.equals(getTeam(), task.getTeam());
       }
   }
   
@@ -63,6 +73,7 @@ public final class Task implements Model {
       .append(getId())
       .append(getName())
       .append(getDescription())
+      .append(getTeam())
       .toString()
       .hashCode();
   }
@@ -73,7 +84,8 @@ public final class Task implements Model {
       .append("Task {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("name=" + String.valueOf(getName()) + ", ")
-      .append("description=" + String.valueOf(getDescription()))
+      .append("description=" + String.valueOf(getDescription()) + ", ")
+      .append("team=" + String.valueOf(getTeam()))
       .append("}")
       .toString();
   }
@@ -104,6 +116,7 @@ public final class Task implements Model {
     return new Task(
       id,
       null,
+      null,
       null
     );
   }
@@ -111,7 +124,8 @@ public final class Task implements Model {
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
       name,
-      description);
+      description,
+      team);
   }
   public interface NameStep {
     BuildStep name(String name);
@@ -122,6 +136,7 @@ public final class Task implements Model {
     Task build();
     BuildStep id(String id) throws IllegalArgumentException;
     BuildStep description(String description);
+    BuildStep team(Team team);
   }
   
 
@@ -129,6 +144,7 @@ public final class Task implements Model {
     private String id;
     private String name;
     private String description;
+    private Team team;
     @Override
      public Task build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -136,7 +152,8 @@ public final class Task implements Model {
         return new Task(
           id,
           name,
-          description);
+          description,
+          team);
     }
     
     @Override
@@ -149,6 +166,12 @@ public final class Task implements Model {
     @Override
      public BuildStep description(String description) {
         this.description = description;
+        return this;
+    }
+    
+    @Override
+     public BuildStep team(Team team) {
+        this.team = team;
         return this;
     }
     
@@ -175,10 +198,11 @@ public final class Task implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, String description) {
+    private CopyOfBuilder(String id, String name, String description, Team team) {
       super.id(id);
       super.name(name)
-        .description(description);
+        .description(description)
+        .team(team);
     }
     
     @Override
@@ -189,6 +213,11 @@ public final class Task implements Model {
     @Override
      public CopyOfBuilder description(String description) {
       return (CopyOfBuilder) super.description(description);
+    }
+    
+    @Override
+     public CopyOfBuilder team(Team team) {
+      return (CopyOfBuilder) super.team(team);
     }
   }
   

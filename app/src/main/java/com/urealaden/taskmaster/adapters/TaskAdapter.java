@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.urealaden.taskmaster.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
@@ -33,9 +34,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         holder.task = tasks.get(position);
-
-        ((TextView)holder.itemView.findViewById(R.id.taskTitle)).setText(holder.task.getName());
-        ((TextView)holder.itemView.findViewById(R.id.taskDescription)).setText(holder.task.getDescription());
+        String title =  holder.task.getName();
+        String description =  holder.task.getDescription();
+        ((TextView)holder.itemView.findViewById(R.id.taskFragmentTitle)).setText(title);
+        ((TextView)holder.itemView.findViewById(R.id.taskFragmentDescription)).setText(description);
 
     }
 

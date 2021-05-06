@@ -31,7 +31,7 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((TextView)holder.itemView.findViewById(R.id.taskFragmentTextView))
+        ((TextView)holder.itemView.findViewById(R.id.taskFragmentTitle))
                 .setText(taskItemList.get(position).getName() );
     }
 
