@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Task Master</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">HOME</string>
+    <string name="enter_a_task">Enter a task</string>
+    <string name="add_task">Add Task</string>
+    <string name="task_title_hint">Give your task a title</string>
+    <string name="submit_btn_text">Submit</string>
+    <string name="total_tasks">Total Tasks: </string>
+    <string name="task_detail">Go to Task </string>
+    <string name="user_profile">User Profile </string>
+    <string name="all_tasks">ALL TASKS</string>
+    <string name="all_tasks_title">ALL Tasks</string>
+    <string name="empty_icon">Empty Icon</string>
+    <string name="back">BACK</string>
+    <string name="settings">Settings</string>
+    <string name="save">Save</string>
+    <string name="enter_username">Enter Username</string>
+
 </resources>

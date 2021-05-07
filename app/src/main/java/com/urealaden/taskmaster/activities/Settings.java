@@ -28,8 +28,6 @@ public class Settings extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor preferencesEditor = preferences.edit();
 
-
-
         String team = preferences.getString("team",null);
         int count = 0;
         ArrayList<String> nameArr = new ArrayList<>();
@@ -51,7 +49,6 @@ public class Settings extends AppCompatActivity {
             teamSpinner.setSelection(count);
         }
 
-
         findViewById(R.id.saveUsernameButton).setOnClickListener(v ->{
             String username = ((TextView) findViewById(R.id.usernameView)).getText().toString();
             String chosenTeam = ((TextView) findViewById(R.id.spinnerTextView)).getText().toString();
@@ -64,9 +61,6 @@ public class Settings extends AppCompatActivity {
             Settings.this.startActivity(goToMainPageIntent);
             startActivity(goToMainPageIntent);
         });
-
-
-
 
     }
 }

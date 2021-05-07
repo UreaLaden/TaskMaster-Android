@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor preferenceEditor = preferences.edit();
+//        SharedPreferences.Editor preferenceEditor = preferences.edit();
 
         try {
             Amplify.addPlugin(new AWSApiPlugin());
@@ -49,20 +49,6 @@ public class MainActivity extends AppCompatActivity {
         if(username != null){
             ((TextView) findViewById(R.id.textViewUsername)).setText("Welcome back " + username + "!");
         }
-
-//        Team team = Team.builder()
-//                .name("Yellow")
-//                .build();
-//
-//
-//        Amplify.API.mutate(
-//                ModelMutation.create(team),
-//                    r -> {
-//                        Log.i(TAG, "onCreate: created team");
-//                    },
-//                    r -> {}
-//                    );
-//
 
         Amplify.API.query(
                 ModelQuery.list(Task.class),
@@ -97,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         Amplify.API.query(
                 ModelQuery.list(Team.class),
                 r -> {
+                    allTeams.clear();
                     for(Team t: r.getData()){
                         allTeams.add(t);
                     }

@@ -35,25 +35,6 @@ public class MainActivityTest2 {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Test
-    public void mainActivityTest2() {
-        ViewInteraction materialButton = onView(
-                allOf(withId(R.id.carTaskButton), withText("Car"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        materialButton.perform(click());
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.taskDetailView), withText("Car"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        textView.check(matches(withText("Car")));
-    }
-
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
 

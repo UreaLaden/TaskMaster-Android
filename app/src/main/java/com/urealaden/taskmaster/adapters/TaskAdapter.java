@@ -17,9 +17,11 @@ import java.util.List;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
     List<Task> tasks;
-
-    public TaskAdapter(List<Task> tasks){
+    public OnClickable onClickable;
+    public TaskAdapter(List<Task> tasks, OnClickable onClickable)
+    {
         this.tasks = tasks;
+        this.onClickable = onClickable;
     }
 
     @NonNull
@@ -28,6 +30,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         View fragment = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_tasks,parent,false);
         TaskViewHolder vh = new TaskViewHolder(fragment);
+        vh.itemView.setOnClickListener(v ->  onClickable.handleClickOnTask(vh));
         return vh;
     }
 
@@ -35,10 +38,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         holder.task = tasks.get(position);
         String title =  holder.task.getName();
-        String description =  holder.task.getDescription();
         ((TextView)holder.itemView.findViewById(R.id.taskFragmentTitle)).setText(title);
-        ((TextView)holder.itemView.findViewById(R.id.taskFragmentDescription)).setText(description);
-
     }
 
     @Override
@@ -46,8 +46,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return tasks.size();
     }
 
-    static class TaskViewHolder extends RecyclerView.ViewHolder{
+    public static class TaskViewHolder extends RecyclerView.ViewHolder{
         public Task task;
         public TaskViewHolder(@NonNull View itemView){super(itemView);}
+    }
+
+    public interface OnClickable {
+        void handleClickOnTask(TaskViewHolder vh);
     }
 }
