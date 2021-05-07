@@ -19,12 +19,15 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.urealaden.taskmaster.R;
 import com.urealaden.taskmaster.adapters.TaskAdapter;
+import com.urealaden.taskmaster.adapters.TaskRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-public class AllTasks extends AppCompatActivity {
+import javax.security.auth.login.LoginException;
+
+public class AllTasks extends AppCompatActivity implements TaskAdapter.OnClickable {
 
     public String TAG = "urealaden.all";
 
@@ -41,16 +44,16 @@ public class AllTasks extends AppCompatActivity {
 //        SharedPreferences.Editor preferenceEditor = preferences.edit();
 
         RecyclerView recyclerView = findViewById(R.id.taskRecyclerView);
-        recyclerView.setAdapter(new TaskAdapter(tasks));
+        recyclerView.setAdapter(new TaskAdapter(tasks,this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mainThreadHandler = new Handler(getMainLooper()){
+        mainThreadHandler = new Handler(getMainLooper()) {
             @Override
-            public void handleMessage(@NonNull Message msg){
+            public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
-                if(msg.what == 1){
+                if (msg.what == 1) {
                     StringJoiner sj = new StringJoiner(", ");
-                    for(Task t:tasks){
+                    for (Task t : tasks) {
                         sj.add(t.getName());
                     }
                     recyclerView.getAdapter().notifyDataSetChanged();
@@ -65,8 +68,8 @@ public class AllTasks extends AppCompatActivity {
         }
         Amplify.API.query(
                 ModelQuery.list(Task.class),
-                response ->{
-                    for(Task t: response.getData()){
+                response -> {
+                    for (Task t : response.getData()) {
                         tasks.add(t);
                     }
                     mainThreadHandler.sendEmptyMessage(1);
@@ -76,24 +79,22 @@ public class AllTasks extends AppCompatActivity {
 
 
         Button backButton = findViewById(R.id.backButon);
-        backButton.setOnClickListener(view ->{
+        backButton.setOnClickListener(view -> {
             Intent goBackToMain = new Intent(AllTasks.this, MainActivity.class);
             AllTasks.this.startActivity(goBackToMain);
             startActivity(goBackToMain);
         });
 
-
-        //RecyclerView Stuff
-//        List<TaskItem> tasks = new ArrayList<>();
-//        tasks.add(new TaskItem("Clean the gutters","Remove the dead birds from the gutters"));
-//        tasks.add(new TaskItem("Empty the trash bins","Trash and recycle bins are overflowing."));
-//        tasks.add(new TaskItem("Take kids to the park","Kids are losing their mind and need fresh air"));
-//        tasks.add(new TaskItem("Wash the car","I can draw a sculpture using dust from the window"));
-//        tasks.add(new TaskItem("Help Anima with homework","Second grade math is no joke"));
-//        RecyclerView rv = findViewById(R.id.taskRecyclerView);
-//        rv.setLayoutManager(new LinearLayoutManager(this));
-//        rv.setAdapter(new TaskRecyclerViewAdapter(tasks));
-
-
     }
+    
+    public void handleClickOnTask(TaskAdapter.TaskViewHolder vh) {
+        Log.i(TAG, "handleClickOnTask: Clicked on task");
+        Intent intent = new Intent(AllTasks.this, TaskDetail.class);
+        intent.putExtra("taskId", vh.task.getId());
+        intent.putExtra("name", vh.task.getName());
+        intent.putExtra("description", vh.task.getDescription());
+        AllTasks.this.startActivity(intent);
+        startActivity(intent);
+    }
+
 }
