@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.Team;
@@ -28,10 +29,13 @@ import static com.urealaden.taskmaster.activities.MainActivity.allTeams;
 
 public class AddTask extends AppCompatActivity {
 
-    public String TAG = "urealaden.addTask";
+    public String TAG = "urealaden.signOut";
     Team selectedTeam;
     Handler handler;
     List<Task> totalTasks = new ArrayList<>();
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +102,6 @@ public class AddTask extends AppCompatActivity {
             Intent intent = new Intent(AddTask.this, MainActivity.class);
             AddTask.this.startActivity(intent);
             startActivity(intent);
-
         });
-
-
-
     }
 }
