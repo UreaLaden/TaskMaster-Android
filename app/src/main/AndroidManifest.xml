@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskMaster">
-        <activity android:name=".activities.Settings"></activity>
+        <activity android:name=".activities.LoginConfirmation"></activity>
+        <activity android:name=".activities.Register" />
+        <activity android:name=".activities.Login" />
+        <activity android:name=".activities.Settings" />
         <activity android:name=".activities.TaskDetail" />
         <activity android:name=".activities.AllTasks" />
         <activity android:name=".activities.AddTask" />

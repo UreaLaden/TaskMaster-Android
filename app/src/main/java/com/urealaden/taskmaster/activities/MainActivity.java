@@ -1,20 +1,28 @@
 
 package com.urealaden.taskmaster.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
-import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
+import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.Team;
@@ -29,6 +37,20 @@ public class MainActivity extends AppCompatActivity {
     public List<Task> tasks = new ArrayList<>();
     public static List<Team> allTeams = new ArrayList<>();
 
+
+    void logoutCognito(){
+        Amplify.Auth.signOut(
+                AuthSignOutOptions.builder()
+                        .globalSignOut(true)
+                        .build(),
+                () -> {
+                    Looper.prepare();
+                    Toast.makeText(getApplicationContext(),"Signed out successfully", Toast.LENGTH_LONG).show();
+                },
+                error -> Log.e(TAG, "logoutCognito: unable to sign out" + error.toString() )
+        );
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,18 +58,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        SharedPreferences.Editor preferenceEditor = preferences.edit();
 
         try {
             Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
         } catch (AmplifyException e) {
             e.printStackTrace();
         }
 
+
+
         String username = preferences.getString("username",null);
+        TextView usernameTextView = findViewById(R.id.textViewUsername);
         if(username != null){
-            ((TextView) findViewById(R.id.textViewUsername)).setText("Welcome back " + username + "!");
+            usernameTextView.setText("Welcome back " + username + "!");
+            usernameTextView.setVisibility(View.VISIBLE);
+        }else{
+            usernameTextView.setVisibility(View.INVISIBLE);
         }
 
         Amplify.API.query(
@@ -61,16 +89,28 @@ public class MainActivity extends AppCompatActivity {
                 response -> Log.i(TAG, "retrievingTasks: " + response.toString())
         );
 
+        Button loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(view ->{
+            startActivity(new Intent(MainActivity.this,Login.class));
+        });
+        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(view -> {
+            logoutCognito();
+        });
+
         Button taskButton = findViewById(R.id.taskButton);
         taskButton.setOnClickListener(view -> {
             Intent goToNewTaskPageIntent = new Intent(MainActivity.this, AddTask.class);
-            MainActivity.this.startActivity(goToNewTaskPageIntent);
             startActivity(goToNewTaskPageIntent);
         });
-        Button allTasksButton = findViewById(R.id.allTaskButton);
+        Button allTasksButton = findViewById(R.id.registerButton);
         allTasksButton.setOnClickListener(view ->{
             Intent goToAllTaskPageIntent = new Intent(MainActivity.this, AllTasks.class);
-            MainActivity.this.startActivity(goToAllTaskPageIntent);
+            startActivity(goToAllTaskPageIntent);
+        });
+        Button signUpButton = findViewById(R.id.signupButton);
+        signUpButton.setOnClickListener(view ->{
+            Intent goToAllTaskPageIntent = new Intent(MainActivity.this, Register.class);
             startActivity(goToAllTaskPageIntent);
         });
 

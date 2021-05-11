@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Task Master</string>
+    <string name="app_name">Task Machine</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
     <string name="home">HOME</string>
     <string name="enter_a_task">Enter a task</string>
     <string name="add_task">Add Task</string>
@@ -14,7 +16,10 @@
     <string name="empty_icon">Empty Icon</string>
     <string name="back">BACK</string>
     <string name="settings">Settings</string>
+    <string name="confirmation_code">Enter your confirmation code</string>
+    <string name="verify_account">Validate Account</string>
     <string name="save">Save</string>
     <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
 
 </resources>
