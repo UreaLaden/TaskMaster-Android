@@ -5,6 +5,7 @@ query GetTask($id: ID!) {
     teamId
     name
     description
+    s3ImageKey
     team {
       id
       name
@@ -29,6 +30,7 @@ query ListTasks(
       teamId
       name
       description
+      s3ImageKey
       team {
         id
         name
@@ -51,6 +53,7 @@ query GetTeam($id: ID!) {
         teamId
         name
         description
+        s3ImageKey
         createdAt
         updatedAt
       }

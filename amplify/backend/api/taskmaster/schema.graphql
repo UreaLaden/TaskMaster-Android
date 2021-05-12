@@ -6,6 +6,7 @@ type Task
   teamId: ID!
   name: String!
   description: String
+  s3ImageKey: String
   team: Team @connection(fields: ["teamId"])
 }
 

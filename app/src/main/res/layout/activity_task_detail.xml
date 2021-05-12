@@ -6,32 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".activities.TaskDetail">
 
-    <TextView
-        android:id="@+id/taskDetailsName"
-        android:layout_width="118dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="60dp"
-        android:textColor="@color/red_200"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/taskDetailsDescription"
-        app:layout_constraintEnd_toEndOf="@+id/taskDetailsDescription"
-        app:layout_constraintHorizontal_bias="0.267"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/taskDetailsDescription"
-        android:layout_width="243dp"
-        android:layout_height="279dp"
-        android:layout_marginBottom="124dp"
-        android:text="@string/empty"
-        android:textColor="@color/ming_700"
-        android:textSize="18sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="375dp"
+        android:layout_height="422dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskDetailsName" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/taskDetailsName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="395dp"
+            android:layout_marginBottom="0dp"
+            android:textColor="@color/red_200"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="264dp"
+            android:layout_height="163dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="16dp"
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/taskDetailsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="161dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="@string/empty"
+            android:textColor="@color/ming_700"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
