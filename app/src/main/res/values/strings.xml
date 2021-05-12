@@ -8,6 +8,7 @@
     <string name="add_task">Add Task</string>
     <string name="task_title_hint">Give your task a title</string>
     <string name="submit_btn_text">Submit</string>
+    <string name="add_file">Add File</string>
     <string name="total_tasks">Total Tasks: </string>
     <string name="task_detail">Go to Task </string>
     <string name="user_profile">User Profile </string>

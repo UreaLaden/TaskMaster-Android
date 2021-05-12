@@ -10,102 +10,115 @@
         android:id="@+id/textView3"
         android:layout_width="131dp"
         android:layout_height="53dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/add_task"
         android:textColor="#931621"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="175dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/taskDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/enter_a_task"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <EditText
-        android:id="@+id/taskTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:ems="10"
-        android:hint="@string/task_title_hint"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/taskDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:autofillHints="" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/total_tasks"
+            android:textColor="@color/ming_700"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
-        android:backgroundTint="#931621"
-        android:text="@string/submit_btn_text"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
+        <TextView
+            android:id="@+id/taskAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_tasks"
+            android:textColor="@color/red_200"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/total_tasks"
-        android:textColor="@color/ming_700"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginTop="190dp"
+        android:layout_marginBottom="220dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/taskAmount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitButton"
-        app:layout_constraintVertical_bias="0.089" />
-
-    <Spinner
-        android:id="@+id/spinnerTeam"
-        android:layout_width="216dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="@+id/taskDescription"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toStartOf="@+id/taskDescription"
-        app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
-
-    <TextView
-        android:id="@+id/taskAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="172dp"
-        android:text="@string/total_tasks"
-        android:textColor="@color/red_200"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/taskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:autofillHints=""
+            android:gravity="center"
+            android:hint="@string/enter_a_task"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/taskTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/task_title_hint"
+            android:inputType="textPersonName" />
+
+        <Spinner
+            android:id="@+id/spinnerTeam"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_marginBottom="32dp"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#931621"
+            android:text="@string/submit_btn_text" />
+
+        <Button
+            android:id="@+id/addFileButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#931621"
+            android:text="@string/add_file" />
+
+        <ImageView
+            android:id="@+id/addTaskImage"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_marginTop="32dp"
+            app:srcCompat="@android:drawable/alert_light_frame" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="62dp"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

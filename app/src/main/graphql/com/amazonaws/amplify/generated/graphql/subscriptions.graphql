@@ -5,6 +5,7 @@ subscription OnCreateTask {
     teamId
     name
     description
+    s3ImageKey
     team {
       id
       name
@@ -24,6 +25,7 @@ subscription OnUpdateTask {
     teamId
     name
     description
+    s3ImageKey
     team {
       id
       name
@@ -43,6 +45,7 @@ subscription OnDeleteTask {
     teamId
     name
     description
+    s3ImageKey
     team {
       id
       name
@@ -66,6 +69,7 @@ subscription OnCreateTeam {
         teamId
         name
         description
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -85,6 +89,7 @@ subscription OnUpdateTeam {
         teamId
         name
         description
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -104,6 +109,7 @@ subscription OnDeleteTeam {
         teamId
         name
         description
+        s3ImageKey
         createdAt
         updatedAt
       }

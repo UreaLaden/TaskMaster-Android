@@ -8,6 +8,7 @@ mutation CreateTask(
     teamId
     name
     description
+    s3ImageKey
     team {
       id
       name
@@ -30,6 +31,7 @@ mutation UpdateTask(
     teamId
     name
     description
+    s3ImageKey
     team {
       id
       name
@@ -52,6 +54,7 @@ mutation DeleteTask(
     teamId
     name
     description
+    s3ImageKey
     team {
       id
       name
@@ -78,6 +81,7 @@ mutation CreateTeam(
         teamId
         name
         description
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -100,6 +104,7 @@ mutation UpdateTeam(
         teamId
         name
         description
+        s3ImageKey
         createdAt
         updatedAt
       }
@@ -122,6 +127,7 @@ mutation DeleteTeam(
         teamId
         name
         description
+        s3ImageKey
         createdAt
         updatedAt
       }
